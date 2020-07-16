@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shenjinxiang.spb.mapper.db3.BookMapper">
+
+    <resultMap id="baseResult" type="com.shenjinxiang.spb.domain.Book">
+        <result property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="author" column="AUTHOR" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryAllBook" resultMap="baseResult">
+        SELECT ID, NAME, AUTHOR
+        FROM BOOK
+        ORDER BY ID ASC
+    </select>
+
+    <select id="queryById" parameterType="int" resultMap="baseResult">
+        SELECT ID, NAME, AUTHOR
+        FROM BOOK
+        <where>
+            AND ID = #{id}
+        </where>
+    </select>
+
+    <insert id="add" parameterType="com.shenjinxiang.spb.domain.Book">
+        <selectKey keyProperty="id" resultType="java.lang.Integer" order="BEFORE">
+            SELECT SEQ_BOOK_ID.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO BOOK
+        (ID, NAME, AUTHOR)
+        VALUES
+        (#{id}, #{name}, #{author})
+    </insert>
+
+    <update id="upd" parameterType="com.shenjinxiang.spb.domain.Book">
+        UPDATE BOOK
+        <set>
+            NAME = #{name},
+            AUTHOR = #{author},
+        </set>
+        <where>
+            AND ID = #{id}
+        </where>
+    </update>
+
+    <delete id="delById" parameterType="int">
+        DELETE FROM BOOK
+        <where>
+            AND ID = #{id}
+        </where>
+    </delete>
+
+</mapper>

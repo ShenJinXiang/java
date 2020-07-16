@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shenjinxiang.spb.mapper.BookMapper">
+
+    <update id="createTable">
+        CREATE TABLE `book` (
+          `id` int(11) NOT NULL AUTO_INCREMENT,
+          `name` varchar(100) DEFAULT NULL,
+          `author` varchar(100) DEFAULT NULL,
+          PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+    </update>
+
+    <select id="queryAll" resultType="java.util.Map">
+        select *
+        from book
+    </select>
+
+</mapper>

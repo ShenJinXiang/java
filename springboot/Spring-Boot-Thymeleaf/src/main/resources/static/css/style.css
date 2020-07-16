@@ -1,0 +1,40 @@
+body {margin: 0px; padding: 0px;}
+
+.data-container {
+    display: block;
+    margin: 20px;
+}
+.data-container .data-table{
+    display: inline-table;
+    width: 100%;
+    border-collapse: collapse;
+}
+.data-container .data-table tr th, .data-container .data-table tr td {
+    border: 1px solid #ccc;
+}
+.data-container .data-table tr th {
+    height: 36px;
+    line-height: 36px;
+    font-size: 13px;
+    text-align: center;
+    color: #fff;
+    background: #5cb85c;
+    border-color: #4cae4c;
+}
+.data-container .data-table tr td {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    padding: 2px 5px;
+}
+.data-container .data-table tr:nth-child(odd) {
+    background: #f1f1f1;
+}
+.data-container .data-table tr td.xh-td {
+    width: 50px;
+    text-align: center;
+}
+.data-container .data-table tr td.center-td{
+    text-align: center;
+}
+
