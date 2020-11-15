@@ -13,7 +13,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.rmi.runtime.Log;
 
 import java.nio.charset.StandardCharsets;
 
@@ -51,6 +50,9 @@ public class TcpServer implements Runnable {
             channelFuture.channel().closeFuture().sync();
         } catch (Exception e) {
             logger.error("启动TCP服务，端口[" + this.port + "]发生错误", e);
+        } finally {
+            boosGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
     }
 }
